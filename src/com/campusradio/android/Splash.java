@@ -9,24 +9,30 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class Home extends ActionBarActivity {
+public class Splash extends ActionBarActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.home);
+		setContentView(R.layout.splash);
 
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
-					.add(R.id.home_container, new PlaceholderFragment()).commit();
+					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
 	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+	}
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.home, menu);
+		getMenuInflater().inflate(R.menu.splash, menu);
 		return true;
 	}
 
@@ -53,8 +59,8 @@ public class Home extends ActionBarActivity {
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_home, container,
-					false);
+			View rootView = inflater.inflate(R.layout.fragment_splash,
+					container, false);
 			return rootView;
 		}
 	}

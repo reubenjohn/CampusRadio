@@ -16,6 +16,14 @@
         <activity
             android:name="com.campusradio.android.Home"
             android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.campusradio.android.Welcome"
+            android:label="@string/title_activity_welcome" >
+        </activity>
+        <activity
+            android:name="com.campusradio.android.Splash"
+            android:label="@string/title_activity_splash" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
