@@ -1,6 +1,9 @@
 package com.campusradio.android;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
@@ -25,8 +28,24 @@ public class Splash extends ActionBarActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-	}
+		boolean firstRun = getSharedPreferences("Spash", Context.MODE_PRIVATE)
+				.getBoolean(CampusRadio.keys.firstRun, true);
+		final Intent intent;
+		if (firstRun)
+			intent = new Intent(Splash.this, Welcome.class);
+		else
+			intent = new Intent(Splash.this, Home.class);
+		Runnable continueToNextActivity = new Runnable() {
 
+			@Override
+			public void run() {
+				startActivity(intent);
+			}
+		};
+		(new Handler()).postDelayed(continueToNextActivity,
+				CampusRadio.properties.splashDuration);
+
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
