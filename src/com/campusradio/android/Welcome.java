@@ -8,9 +8,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Gallery;
 
 public class Welcome extends ActionBarActivity {
 
+	Gallery gallery;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -20,7 +22,18 @@ public class Welcome extends ActionBarActivity {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
+		bridgeXML();
+		initiateFeilds();
 	}
+
+	private void bridgeXML() {
+		
+	}
+	
+	private void initiateFeilds() {
+		
+	}
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

@@ -2,6 +2,7 @@ package com.campusradio.android;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -28,12 +29,16 @@ public class Splash extends ActionBarActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		boolean firstRun = getSharedPreferences("Spash", Context.MODE_PRIVATE)
-				.getBoolean(CampusRadio.keys.firstRun, true);
+		SharedPreferences prefs = getSharedPreferences("Spash",
+				Context.MODE_PRIVATE);
+		boolean firstRun = prefs.getBoolean(CampusRadio.keys.firstRun, true);
 		final Intent intent;
-		if (firstRun)
+		if (firstRun) {
 			intent = new Intent(Splash.this, Welcome.class);
-		else
+			SharedPreferences.Editor editor=prefs.edit();
+			editor.putBoolean(CampusRadio.keys.firstRun, true);
+			editor.commit();
+		} else
 			intent = new Intent(Splash.this, Home.class);
 		Runnable continueToNextActivity = new Runnable() {
 

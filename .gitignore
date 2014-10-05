@@ -1,4 +1,5 @@
 *.backup*
+*.lnk
 
 # Built application files
 *.apk
