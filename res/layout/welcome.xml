@@ -1,8 +1,17 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
+    android:id="@+id/welcome_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.campusradio.android.Welcome"
-    tools:ignore="MergeRootFrame" />
+    class="com.campusradio.android.acquaint.WelcomeFragment"
+    tools:context="com.campusradio.android.acquaint.Welcome"
+    tools:ignore="MergeRootFrame" >
 
+    <fragment
+        android:id="@+id/welcome_fragment"
+        android:name="com.campusradio.android.acquaint.WelcomeFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout="@layout/fragment_welcome" />
+
+</FrameLayout>

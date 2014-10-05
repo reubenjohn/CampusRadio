@@ -17,10 +17,17 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
     
-    <style name="SplashTheme" parent="AppBaseTheme">
+    <style name="FullScreenTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
         <item name="windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
     </style>
+    <style name="SplashTheme" parent="FullScreenTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    <style name="WelcomeTheme" parent="FullScreenTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    
 
 </resources>

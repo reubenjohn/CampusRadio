@@ -1,0 +1,51 @@
+package com.campusradio.android.acquaint;
+
+import java.util.List;
+import java.util.Vector;
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.campusradio.android.R;
+
+public class WelcomeFragment extends Fragment {
+
+	private WelcomePageAdapter welcomePageAdapter;
+	ViewPager welcomePager;
+	ViewPager viewPager;
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View v = inflater.inflate(R.layout.fragment_welcome, container, false);
+		bridgeXML(v);
+		initializeFeilds();
+		return v;
+	}
+
+	private void bridgeXML(View v) {
+		viewPager = (ViewPager) v.findViewById(R.id.vp_welcome);
+	}
+
+	private void initializeFeilds() {
+		initializePaging();
+	}
+
+	private void initializePaging() {
+		List<Fragment> fragments = new Vector<Fragment>();
+		fragments.add(Fragment.instantiate(getActivity(),
+				WelcomePage1Fragment.class.getName()));
+		fragments.add(Fragment.instantiate(getActivity(),
+				WelcomePage2Fragment.class.getName()));
+		fragments.add(Fragment.instantiate(getActivity(),
+				WelcomePage3Fragment.class.getName()));
+		welcomePageAdapter = new WelcomePageAdapter(getActivity()
+				.getSupportFragmentManager(), fragments);
+
+		viewPager.setAdapter(welcomePageAdapter);
+	}
+}

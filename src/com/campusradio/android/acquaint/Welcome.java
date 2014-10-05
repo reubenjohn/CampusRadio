@@ -1,39 +1,36 @@
-package com.campusradio.android;
+package com.campusradio.android.acquaint;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Gallery;
 
-public class Welcome extends ActionBarActivity {
+import com.campusradio.android.R;
 
-	Gallery gallery;
+public class Welcome extends FragmentActivity {
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.welcome);
-
-		if (savedInstanceState == null) {
-			getSupportFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
-		}
 		bridgeXML();
 		initiateFeilds();
 	}
 
 	private void bridgeXML() {
-		
-	}
-	
-	private void initiateFeilds() {
-		
+
 	}
 
+	private void initiateFeilds() {
+		initializePaging();
+	}
+
+	private void initializePaging() {
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

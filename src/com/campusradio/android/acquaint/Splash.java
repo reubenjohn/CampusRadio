@@ -1,4 +1,13 @@
-package com.campusradio.android;
+package com.campusradio.android.acquaint;
+
+import com.campusradio.android.CampusRadio;
+import com.campusradio.android.Home;
+import com.campusradio.android.R;
+import com.campusradio.android.CampusRadio.keys;
+import com.campusradio.android.CampusRadio.properties;
+import com.campusradio.android.R.id;
+import com.campusradio.android.R.layout;
+import com.campusradio.android.R.menu;
 
 import android.content.Context;
 import android.content.Intent;
