@@ -1,14 +1,5 @@
 package com.campusradio.android.acquaint;
 
-import com.campusradio.android.CampusRadio;
-import com.campusradio.android.Home;
-import com.campusradio.android.R;
-import com.campusradio.android.CampusRadio.keys;
-import com.campusradio.android.CampusRadio.properties;
-import com.campusradio.android.R.id;
-import com.campusradio.android.R.layout;
-import com.campusradio.android.R.menu;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -22,11 +13,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.campusradio.android.CampusRadio;
+import com.campusradio.android.FullScreenManager;
+import com.campusradio.android.R;
+
 public class Splash extends ActionBarActivity {
+
+	FullScreenManager fullScreenManager;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		fullScreenManager = new FullScreenManager(Splash.this);
+		fullScreenManager.allowContentBehindStatusBar();
+		fullScreenManager.activateFullScreen();
 		setContentView(R.layout.splash);
 
 		if (savedInstanceState == null) {
@@ -41,23 +41,23 @@ public class Splash extends ActionBarActivity {
 		SharedPreferences prefs = getSharedPreferences("Spash",
 				Context.MODE_PRIVATE);
 		boolean firstRun = prefs.getBoolean(CampusRadio.keys.firstRun, true);
-		final Intent intent;
 		if (firstRun) {
-			intent = new Intent(Splash.this, Welcome.class);
-			SharedPreferences.Editor editor=prefs.edit();
-			editor.putBoolean(CampusRadio.keys.firstRun, true);
+			final Intent intent = new Intent(Splash.this, Welcome.class);
+			SharedPreferences.Editor editor = prefs.edit();
+			editor.putBoolean(CampusRadio.keys.firstRun, CampusRadio.debugMode);
 			editor.commit();
-		} else
-			intent = new Intent(Splash.this, Home.class);
-		Runnable continueToNextActivity = new Runnable() {
+			Runnable continueToNextActivity = new Runnable() {
 
-			@Override
-			public void run() {
-				startActivity(intent);
-			}
-		};
-		(new Handler()).postDelayed(continueToNextActivity,
-				CampusRadio.properties.splashDuration);
+				@Override
+				public void run() {
+					startActivity(intent);
+					overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+				}
+			};
+			(new Handler()).postDelayed(continueToNextActivity,
+					CampusRadio.properties.splashDuration);
+		} else
+			finish();
 
 	}
 

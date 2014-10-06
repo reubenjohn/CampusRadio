@@ -2,7 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/red_dark"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -15,7 +14,7 @@
         android:layout_height="180dp"
         android:layout_gravity="center"
         android:src="@drawable/side"
-        android:contentDescription="@leftbigwave"/>
+        android:contentDescription="leftbigwave"/>
 
     <ImageView
         android:id="@+id/imageView2"
@@ -24,7 +23,7 @@
         android:layout_gravity="center"
         android:layout_weight="0.52"
         android:src="@drawable/side" 
-     android:contentDescription="@leftsmallwave"/>
+     android:contentDescription="leftsmallwave"/>
 
     <ImageView
         android:id="@+id/imageView1"
@@ -33,7 +32,7 @@
         android:layout_gravity="center"
         android:layout_weight="0.52"
         android:src="@drawable/centrelogo" 
-        android:contentDescription="@centre"/>
+        android:contentDescription="centre"/>
        
 
     <ImageView
@@ -43,7 +42,7 @@
         android:layout_gravity="center"
         android:layout_weight="0.52"
         android:src="@drawable/side2" 
-        android:contentDescription="@rightsmallwave"/>
+        android:contentDescription="rightsmallwave"/>
        
     <ImageView
         android:id="@+id/imageView5"
@@ -51,6 +50,6 @@
         android:layout_height="180dp"
         android:layout_gravity="center"
         android:src="@drawable/side2" 
-        android:contentDescription="@rightbigwave"/>
+        android:contentDescription="rightbigwave"/>
 
 </LinearLayout>

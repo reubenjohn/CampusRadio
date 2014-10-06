@@ -9,13 +9,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.campusradio.android.FullScreenManager;
 import com.campusradio.android.R;
 
 public class Welcome extends FragmentActivity {
 
+	FullScreenManager fullScreenManager;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		fullScreenManager = new FullScreenManager(Welcome.this);
+		fullScreenManager.allowContentBehindStatusBar();
+		fullScreenManager.activateFullScreen();
 		setContentView(R.layout.welcome);
 		bridgeXML();
 		initiateFeilds();
@@ -50,6 +56,10 @@ public class Welcome extends FragmentActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onBackPressed() {
 	}
 
 	/**

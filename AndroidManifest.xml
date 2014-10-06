@@ -23,7 +23,6 @@
         </activity>
         <activity
             android:name="com.campusradio.android.acquaint.Splash"
-            android:label="@string/title_activity_splash"
             android:theme="@style/SplashTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -3,6 +3,7 @@ package com.campusradio.android.acquaint;
 import java.util.List;
 import java.util.Vector;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.campusradio.android.R;
+import com.campusradio.android.util.DepthPageTransformer;
 
 public class WelcomeFragment extends Fragment {
 
@@ -36,6 +38,11 @@ public class WelcomeFragment extends Fragment {
 	}
 
 	private void initializePaging() {
+		if(Build.VERSION.SDK_INT>=11)
+			viewPager.setPageTransformer(true, new DepthPageTransformer());
+		else{
+			// TODO Create alternate page transformers for lower APIs
+		}
 		List<Fragment> fragments = new Vector<Fragment>();
 		fragments.add(Fragment.instantiate(getActivity(),
 				WelcomePage1Fragment.class.getName()));
