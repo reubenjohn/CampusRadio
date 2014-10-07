@@ -22,7 +22,7 @@
             android:theme="@style/WelcomeTheme" >
         </activity>
         <activity
-            android:name="com.campusradio.android.acquaint.Splash"
+            android:name="com.campusradio.android.Splash"
             android:theme="@style/SplashTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

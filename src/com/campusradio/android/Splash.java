@@ -1,4 +1,4 @@
-package com.campusradio.android.acquaint;
+package com.campusradio.android;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,9 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.campusradio.android.CampusRadio;
-import com.campusradio.android.FullScreenManager;
 import com.campusradio.android.R;
+import com.campusradio.android.acquaint.Welcome;
 
 public class Splash extends ActionBarActivity {
 
@@ -38,27 +37,34 @@ public class Splash extends ActionBarActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		SharedPreferences prefs = getSharedPreferences("Spash",
+		SharedPreferences prefs = getSharedPreferences("Splash",
 				Context.MODE_PRIVATE);
 		boolean firstRun = prefs.getBoolean(CampusRadio.keys.firstRun, true);
+		final Intent intent;
 		if (firstRun) {
-			final Intent intent = new Intent(Splash.this, Welcome.class);
+			intent = new Intent(Splash.this, Welcome.class);
 			SharedPreferences.Editor editor = prefs.edit();
 			editor.putBoolean(CampusRadio.keys.firstRun, CampusRadio.debugMode);
 			editor.commit();
-			Runnable continueToNextActivity = new Runnable() {
-
-				@Override
-				public void run() {
-					startActivity(intent);
-					overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
-				}
-			};
-			(new Handler()).postDelayed(continueToNextActivity,
-					CampusRadio.properties.splashDuration);
 		} else
-			finish();
+			intent = new Intent(Splash.this, Home.class);
+		Runnable continueToNextActivity = new Runnable() {
 
+			@Override
+			public void run() {
+				startActivity(intent);
+				overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+			}
+		};
+		(new Handler()).postDelayed(continueToNextActivity,
+				CampusRadio.properties.splashDuration);
+
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		finish();
 	}
 
 	@Override

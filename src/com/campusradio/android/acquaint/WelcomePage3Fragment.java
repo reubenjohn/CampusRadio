@@ -1,5 +1,6 @@
 package com.campusradio.android.acquaint;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.campusradio.android.Home;
 import com.campusradio.android.R;
 
 public class WelcomePage3Fragment extends Fragment {
@@ -33,6 +35,9 @@ public class WelcomePage3Fragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				// TODO Play welcome sound
+				Intent startHome=new Intent(getActivity(), Home.class);
+				getActivity().startActivity(startHome);
+				getActivity().finish();
 			}
 		};
 		b_finish.setOnClickListener(finishButtonListener);

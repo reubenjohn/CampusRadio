@@ -28,7 +28,7 @@ public class Welcome extends FragmentActivity {
 	}
 
 	private void bridgeXML() {
-
+		
 	}
 
 	private void initiateFeilds() {

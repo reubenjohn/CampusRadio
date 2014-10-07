@@ -14,19 +14,14 @@ public class Home extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		launchSpashScreen();
-		
+
 		setContentView(R.layout.home);
 
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
-					.add(R.id.home_container, new PlaceholderFragment()).commit();
+					.add(R.id.home_container, new PlaceholderFragment())
+					.commit();
 		}
-	}
-
-	private void launchSpashScreen() {
-				
 	}
 
 	@Override

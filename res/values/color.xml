@@ -2,6 +2,10 @@
 <resources>
     <color name="red_dark">#A10010</color>
     <color name="belize_hole">#2980B9</color>
+    <color name="nephritis">#27ae60</color>
+    <color name="wisteria">#8e44ad</color>
+    <color name="orange">#f39c12</color>
+    <color name="holo_dark">#007777</color>
     
     
 </resources>
