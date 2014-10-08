@@ -19,8 +19,7 @@ public class Home extends ActionBarActivity {
 
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
-					.add(R.id.home_container, new PlaceholderFragment())
-					.commit();
+					.add(R.id.home_container, new HomeFragment()).commit();
 		}
 	}
 

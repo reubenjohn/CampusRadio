@@ -27,7 +27,7 @@
      android:contentDescription="leftsmallwave"/>
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/iv_artist"
         android:layout_width="150dp"
         android:layout_height="130dp"
         android:layout_gravity="center"
