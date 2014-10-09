@@ -4,13 +4,24 @@
     <string name="app_name">Campus Radio</string>
     <string name="logo">Campus Radio logo</string>
     <string name="action_settings">Settings</string>
-    
     <string name="home_song_name_sample">Sample song name</string>
     <string name="home_artist_name_sample">Sample artist name</string>
     <string name="home_album_art">album </string>
+    <string name="home_upload">Upload </string>
     
     <string name="welcome_page_0_message">Welcome!</string>
     <string name="welcome_page_1_message">Listen to Music</string>
     <string name="welcome_finish">Got it</string>
+    
+    <string name="title_activity_upload">Upload</string>
+    <string name="upload_song_name">Song name</string>
+    <string name="upload_artist_name">Artist</string>
+    <string name="upload_email">Email</string>
+    <string name="upload_university">University</string>
+    <string name="upload_mood">Mood</string>
+    <string name="upload_genre">Genre</string>
+    <string name="upload_description">Description</string>
+    <string name="upload_file">File</string>
+    <string name="upload_username">Username</string>
 
 </resources>
