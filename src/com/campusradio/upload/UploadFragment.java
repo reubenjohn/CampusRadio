@@ -21,7 +21,7 @@ import com.campusradio.android.R;
 public class UploadFragment extends Fragment {
 
 	ActionMode uploadActionMode;
-	UploadHandler uploadHandler;
+	HttpPostHandler uploadHandler;
 	TextView response;
 
 	private ActionMode.Callback sessionCreateActionModeCallBack = new ActionMode.Callback() {
@@ -64,9 +64,6 @@ public class UploadFragment extends Fragment {
 			uploadInfo.putString(CampusRadio.keys.uploadSongName,
 					CampusRadio.defaults.uploadSongName);
 
-			uploadHandler = new UploadHandler();
-			uploadHandler.execute("blah");
-
 			Intent result = new Intent();
 			Log.d("StudyTimerSessionSetup",
 					"Bundled uploadInfo->" + uploadInfo.toString());
@@ -87,7 +84,7 @@ public class UploadFragment extends Fragment {
 	}
 
 	private void bridgeXML(View v) {
-		response = (TextView) v.findViewById(R.id.tv_song);
+		response = (TextView) v.findViewById(R.id.tv_response);
 	}
 
 	private void initializeFeilds() {
@@ -95,6 +92,15 @@ public class UploadFragment extends Fragment {
 			uploadActionMode = ((ActionBarActivity) getActivity())
 					.startSupportActionMode(sessionCreateActionModeCallBack);
 		}
+		uploadHandler = new HttpPostHandler();
+		uploadHandler.execute("blah");
+		uploadHandler
+				.setOnPostCompleteListener(new OnHttpPostCompleteListener() {
+					@Override
+					public void onHttpPostComplete(String response) {
+						//start html activity
+					}
+				});
 	}
 
 	public void checkResponse() {
