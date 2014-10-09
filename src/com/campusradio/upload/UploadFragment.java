@@ -50,28 +50,19 @@ public class UploadFragment extends Fragment {
 		@Override
 		public boolean onActionItemClicked(ActionMode mode, MenuItem menu) {
 			Log.d("UploadFragment", "Action item clicked");
-			Bundle uploadInfo = new Bundle();
-			uploadInfo.putString(CampusRadio.keys.uploadSongName,
-					CampusRadio.defaults.uploadSongName);
-			uploadInfo.putString(CampusRadio.keys.uploadArtistName,
-					CampusRadio.defaults.uploadArtistName);
-			uploadInfo.putString(CampusRadio.keys.uploadEmail,
-					CampusRadio.defaults.uploadSongName);
-			uploadInfo.putString(CampusRadio.keys.uploadUniversity,
-					CampusRadio.defaults.uploadUniversity);
-			uploadInfo.putString(CampusRadio.keys.uploadSongName,
-					CampusRadio.defaults.uploadMood);
-			uploadInfo.putString(CampusRadio.keys.uploadSongName,
-					CampusRadio.defaults.uploadSongName);
-			uploadInfo.putString(CampusRadio.keys.uploadSongName,
-					CampusRadio.defaults.uploadSongName);
+			Bundle uploadInfo;
+			switch (menu.getItemId()) {
+			case R.id.action_upload:
+				uploadInfo = bundleUploadInfo();
 
-			Intent result = new Intent();
-			Log.d("StudyTimerSessionSetup",
-					"Bundled uploadInfo->" + uploadInfo.toString());
-			result.putExtras(uploadInfo);
-			getActivity().setResult(Activity.RESULT_OK, result);
-			getActivity().finish();
+				upload(uploadInfo);
+
+				break;
+
+			default:
+				break;
+			}
+
 			return false;
 		}
 	};
@@ -85,6 +76,43 @@ public class UploadFragment extends Fragment {
 		return v;
 	}
 
+	protected void upload(Bundle uploadInfo) {
+		uploadHandler.execute(
+				"http://172.16.16.16/24online/webpages/client.jsp",
+				getResources().getString(R.string.uploading_message),
+				CampusRadio.keys.uploadSongName,
+				uploadInfo.getString(CampusRadio.keys.uploadSongName),
+				CampusRadio.keys.uploadArtistName,
+				uploadInfo.getString(CampusRadio.keys.uploadArtistName),
+				CampusRadio.keys.uploadEmail,
+				uploadInfo.getString(CampusRadio.keys.uploadEmail),
+				CampusRadio.keys.uploadUniversity,
+				uploadInfo.getString(CampusRadio.keys.uploadUniversity),
+				CampusRadio.keys.uploadMood,
+				uploadInfo.getString(CampusRadio.keys.uploadMood),
+				CampusRadio.keys.uploadMood,
+				uploadInfo.getString(CampusRadio.keys.uploadMood));
+	}
+
+	protected Bundle bundleUploadInfo() {
+		Bundle uploadInfo = new Bundle();
+		uploadInfo.putString(CampusRadio.keys.uploadSongName,
+				CampusRadio.defaults.uploadSongName);
+		uploadInfo.putString(CampusRadio.keys.uploadArtistName,
+				CampusRadio.defaults.uploadArtistName);
+		uploadInfo.putString(CampusRadio.keys.uploadEmail,
+				CampusRadio.defaults.uploadEmail);
+		uploadInfo.putString(CampusRadio.keys.uploadUniversity,
+				CampusRadio.defaults.uploadUniversity);
+		uploadInfo.putString(CampusRadio.keys.uploadSongName,
+				CampusRadio.defaults.uploadMood);
+		uploadInfo.putString(CampusRadio.keys.uploadSongName,
+				CampusRadio.defaults.uploadSongName);
+		uploadInfo.putString(CampusRadio.keys.uploadSongName,
+				CampusRadio.defaults.uploadSongName);
+		return uploadInfo;
+	}
+
 	private void bridgeXML(View v) {
 		response = (TextView) v.findViewById(R.id.tv_response);
 	}
@@ -95,21 +123,32 @@ public class UploadFragment extends Fragment {
 					.startSupportActionMode(sessionCreateActionModeCallBack);
 		}
 		uploadHandler = new HttpPostHandler();
-		uploadHandler.execute("http://posttestserver.com/post.php",
-				getResources().getString(R.string.uploading_message),
-				"REUBEN", "REUBEN", "JOHN", "JOHN");
+
+		// uploadHandler.execute("http://posttestserver.com/post.php",
+		// getResources().getString(R.string.uploading_message), "REUBEN",
+		// "REUBEN", "JOHN", "JOHN");
+
 		uploadHandler
 				.setOnPostCompleteListener(new OnHttpPostCompleteListener() {
 					@Override
 					public void onHttpPostComplete(String response) {
-						// start html activity
-						Intent intent = new Intent(getActivity(),
-								SuspiciousUpload.class);
-						intent.putExtra(CampusRadio.keys.uploadResponse,
-								response);
-						getActivity().startActivity(intent);
+						Intent intent;
+						if (validateResponse(response)) {
+						} else {
+							intent = new Intent(getActivity(),
+									SuspiciousUpload.class);
+							intent.putExtra(CampusRadio.keys.uploadResponse,
+									response);
+							getActivity().startActivity(intent);
+						}
 					}
 				});
+	}
+
+	protected boolean validateResponse(String response) {
+		// TODO Evaluate and return true if the response represents a success
+		// and false otherwise
+		return false;
 	}
 
 	public void checkResponse() {
