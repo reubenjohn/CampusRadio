@@ -4,7 +4,7 @@
     tools:context="com.campusradio.upload.Upload" >
 
     <item
-        android:id="@+id/mi_upload"
+        android:id="@+id/action_upload"
         android:icon="@android:drawable/ic_input_add"
         android:showAsAction="always|withText"
         android:title="@string/action_upload"/>
