@@ -1,4 +1,4 @@
-package com.campusradio.upload;
+package com.reubenjohn.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,56 +21,40 @@ import org.apache.http.params.HttpConnectionParams;
 import android.os.AsyncTask;
 
 import com.campusradio.android.CampusRadio;
+import com.campusradio.android.debug.NullPointerAsserter;
+import com.campusradio.upload.OnHttpPostCompleteListener;
 
 public class HttpPostHandler extends AsyncTask<String, String, String> {
 
-	String result = "Not loaded yet";
+	NullPointerAsserter asserter = new NullPointerAsserter(
+			HttpPostHandler.class.toString());
+
+	public String result = "loading...";
 	OnHttpPostCompleteListener postListener = new OnHttpPostCompleteListener() {
 
 		@Override
 		public void onHttpPostComplete(String response) {
 			// TODO Auto-generated method stub
-			
+
 		}
 	};
 
 	@Override
-	protected String doInBackground(String... arg0) {
-		/*
-		 * HttpClient httpClient = new DefaultHttpClient();
-		 * HttpConnectionParams.setConnectionTimeout(httpClient.getParams(),
-		 * CampusRadio.properties.uploadTimeOut);
-		 * HttpConnectionParams.setSoTimeout(httpClient.getParams(),
-		 * CampusRadio.properties.uploadTimeOut); URI url; BufferedReader
-		 * br=null; try { url = new
-		 * URI("http://172.16.16.16/24online/webpages/client.jsp"); HttpPost
-		 * httpPost = new HttpPost(url); List<NameValuePair> nameValuePairs =
-		 * new ArrayList<NameValuePair>(); nameValuePairs.add(new
-		 * BasicNameValuePair("username", "")); nameValuePairs.add(new
-		 * BasicNameValuePair("password", "")); httpPost.setEntity(new
-		 * UrlEncodedFormEntity(nameValuePairs)); HttpResponse response =
-		 * httpClient.execute(httpPost);
-		 * 
-		 * br = new BufferedReader(new
-		 * InputStreamReader(response.getEntity().getContent()), 8096); } catch
-		 * (URISyntaxException e) { e.printStackTrace(); } catch
-		 * (UnsupportedEncodingException e) { e.printStackTrace(); } catch
-		 * (ClientProtocolException e) { e.printStackTrace(); } catch
-		 * (IOException e) { e.printStackTrace(); } if(br!=null){ try { return
-		 * result=br.readLine(); } catch (IOException e) { e.printStackTrace();
-		 * } } return null;
-		 */
+	protected String doInBackground(String... arg) {
 		BufferedReader bufferReader = null;
 		try {
+			if (arg[1] != null)
+				result = arg[1];
 			HttpClient httpClient = new DefaultHttpClient();
 			HttpConnectionParams.setConnectionTimeout(httpClient.getParams(),
 					CampusRadio.properties.uploadTimeOut);
-			URI website_uri = new URI("http://posttestserver.com/post.php");
+			URI website_uri = new URI(arg[0]);
 
 			HttpPost httpPost = new HttpPost(website_uri);
 			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-			nameValuePairs.add(new BasicNameValuePair("REUBEN", "REUBEN"));
-			nameValuePairs.add(new BasicNameValuePair("JOHN", "JOHN"));
+			for (int i = 2; i < arg.length; i += 2) {
+				nameValuePairs.add(new BasicNameValuePair(arg[i], arg[i + 1]));
+			}
 			httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
 			HttpResponse response = httpClient.execute(httpPost);

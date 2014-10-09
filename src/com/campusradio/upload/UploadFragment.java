@@ -17,6 +17,8 @@ import android.widget.TextView;
 
 import com.campusradio.android.CampusRadio;
 import com.campusradio.android.R;
+import com.campusradio.upload.suspicious.SuspiciousUpload;
+import com.reubenjohn.util.HttpPostHandler;
 
 public class UploadFragment extends Fragment {
 
@@ -93,12 +95,19 @@ public class UploadFragment extends Fragment {
 					.startSupportActionMode(sessionCreateActionModeCallBack);
 		}
 		uploadHandler = new HttpPostHandler();
-		uploadHandler.execute("blah");
+		uploadHandler.execute("http://posttestserver.com/post.php",
+				getResources().getString(R.string.uploading_message),
+				"REUBEN", "REUBEN", "JOHN", "JOHN");
 		uploadHandler
 				.setOnPostCompleteListener(new OnHttpPostCompleteListener() {
 					@Override
 					public void onHttpPostComplete(String response) {
-						//start html activity
+						// start html activity
+						Intent intent = new Intent(getActivity(),
+								SuspiciousUpload.class);
+						intent.putExtra(CampusRadio.keys.uploadResponse,
+								response);
+						getActivity().startActivity(intent);
 					}
 				});
 	}

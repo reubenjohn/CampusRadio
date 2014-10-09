@@ -1,4 +1,4 @@
-package com.campusradio.android.acquaint;
+package com.campusradio.upload.suspicious;
 
 import java.util.List;
 import java.util.Vector;
@@ -14,16 +14,16 @@ import android.view.ViewGroup;
 import com.campusradio.android.R;
 import com.campusradio.android.util.WelcomePageTransformer;
 
-public class WelcomeFragment extends Fragment {
+public class SuspiciousUploadFragment extends Fragment {
 
-	private WelcomePageAdapter welcomePageAdapter;
+	private SuspiciousUploadPageAdapter suspiciousUploadPageAdapter;
 	ViewPager welcomePager;
 	ViewPager viewPager;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.fragment_welcome, container, false);
+		View v = inflater.inflate(R.layout.fragment_suspicious_upload, container, false);
 		bridgeXML(v);
 		initializeFeilds();
 		return v;
@@ -45,14 +45,12 @@ public class WelcomeFragment extends Fragment {
 		}
 		List<Fragment> fragments = new Vector<Fragment>();
 		fragments.add(Fragment.instantiate(getActivity(),
-				WelcomePage1Fragment.class.getName()));
+				SuspiciousUploadRawFragment.class.getName()));
 		fragments.add(Fragment.instantiate(getActivity(),
-				WelcomePage2Fragment.class.getName()));
-		fragments.add(Fragment.instantiate(getActivity(),
-				WelcomePage3Fragment.class.getName()));
-		welcomePageAdapter = new WelcomePageAdapter(getActivity()
+				SuspiciousUploadHtmlFragment.class.getName()));
+		suspiciousUploadPageAdapter = new SuspiciousUploadPageAdapter(getActivity()
 				.getSupportFragmentManager(), fragments);
 
-		viewPager.setAdapter(welcomePageAdapter);
+		viewPager.setAdapter(suspiciousUploadPageAdapter);
 	}
 }

@@ -9,11 +9,9 @@
     <string name="home_artist_name_sample">Sample artist name</string>
     <string name="home_album_art">album </string>
     <string name="home_upload">Upload</string>
-    
     <string name="welcome_page_0_message">Welcome!</string>
     <string name="welcome_page_1_message">Listen to Music</string>
     <string name="welcome_finish">Got it</string>
-    
     <string name="title_activity_upload">Upload</string>
     <string name="upload_song_name">Song name</string>
     <string name="upload_artist_name">Artist</string>
@@ -24,5 +22,8 @@
     <string name="upload_description">Description</string>
     <string name="upload_file">File</string>
     <string name="upload_username">Username</string>
+    <string name="uploading_message">No peeking! I\'m not done!</string>
+    <string name="suspicious_upload_message">Hmmm&#8230; somethings fishy!</string>
+    <string name="title_activity_suspicious_upload">SuspiciousUpload</string>
 
 </resources>

@@ -2,8 +2,6 @@ package com.campusradio.android;
 
 public class CampusRadio {
 
-	public static final boolean debugMode =true;
-
 	public static final class keys {
 		public static final String firstRun = "FIRST_RUN";
 		public static final String uploadSongName = "upload_song_name";
@@ -14,6 +12,7 @@ public class CampusRadio {
 		public static final String uploadGenre = "upload_genre";
 		public static final String uploadDescription = "upload_description";
 		public static final String uploadUserName = "upload_username";
+		public static final String uploadResponse = "upload_response";
 
 	}
 
@@ -27,6 +26,7 @@ public class CampusRadio {
 		public static final String uploadGenre = "BAD_GENRE";
 		public static final String uploadDescription = "BAD_DESCRIPTION";
 		public static final String uploadUserName = "BAD_USERNAME";
+		public static final String uploadResponse = "BAD_RESPONSE";
 		
 	}
 	

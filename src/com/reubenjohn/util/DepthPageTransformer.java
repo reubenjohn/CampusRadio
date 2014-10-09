@@ -1,4 +1,4 @@
-package com.campusradio.android.util;
+package com.reubenjohn.util;
 
 import android.annotation.TargetApi;
 import android.os.Build;

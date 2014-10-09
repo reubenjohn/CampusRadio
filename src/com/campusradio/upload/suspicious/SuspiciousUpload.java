@@ -1,24 +1,26 @@
-package com.campusradio.upload;
+package com.campusradio.upload.suspicious;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.campusradio.android.R;
 
-public class Upload extends ActionBarActivity {
+public class SuspiciousUpload extends ActionBarActivity {
 
-	UploadFragment uploadFragment=new UploadFragment();
+	SuspiciousUploadFragment suspiciousUploadFragment;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.upload);
+		setContentView(R.layout.suspicious_upload);
 
+		suspiciousUploadFragment = new SuspiciousUploadFragment();
+		
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
-					.add(R.id.upload_container, uploadFragment).commit();
+					.add(R.id.suspicious_upload_container, suspiciousUploadFragment).commit();
 		}
 	}
 
@@ -26,15 +28,8 @@ public class Upload extends ActionBarActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.upload, menu);
+		getMenuInflater().inflate(R.menu.suspicious_upload, menu);
 		return true;
-	}
-	
-
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		uploadFragment.checkResponse();
-		return super.onKeyDown(keyCode, event);
 	}
 
 	@Override

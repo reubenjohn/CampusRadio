@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 
 import com.campusradio.android.R;
 import com.campusradio.android.acquaint.Welcome;
+import com.campusradio.android.debug.Debug;
 
 public class Splash extends ActionBarActivity {
 
@@ -29,8 +30,10 @@ public class Splash extends ActionBarActivity {
 		setContentView(R.layout.splash);
 
 		if (savedInstanceState == null) {
-			getSupportFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
+			getSupportFragmentManager()
+					.beginTransaction()
+					.add(R.id.suspicious_upload_container,
+							new PlaceholderFragment()).commit();
 		}
 	}
 
@@ -44,7 +47,7 @@ public class Splash extends ActionBarActivity {
 		if (firstRun) {
 			intent = new Intent(Splash.this, Welcome.class);
 			SharedPreferences.Editor editor = prefs.edit();
-			editor.putBoolean(CampusRadio.keys.firstRun, CampusRadio.debugMode);
+			editor.putBoolean(CampusRadio.keys.firstRun, Debug.enabled);
 			editor.commit();
 		} else
 			intent = new Intent(Splash.this, Home.class);

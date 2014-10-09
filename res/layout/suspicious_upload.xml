@@ -3,6 +3,6 @@
     android:id="@+id/suspicious_upload_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.campusradio.android.Splash"
+    tools:context="com.campusradio.upload.suspicious.SuspiciousUpload"
     tools:ignore="MergeRootFrame" />
 

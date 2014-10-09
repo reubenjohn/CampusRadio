@@ -7,7 +7,8 @@
     <uses-sdk
         android:minSdkVersion="9"
         android:targetSdkVersion="19" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -34,6 +35,10 @@
         <activity
             android:name="com.campusradio.upload.Upload"
             android:label="@string/title_activity_upload" >
+        </activity>
+        <activity
+            android:name="com.campusradio.upload.suspicious.SuspiciousUpload"
+            android:label="@string/title_activity_suspicious_upload" >
         </activity>
     </application>
 
