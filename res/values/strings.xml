@@ -9,6 +9,8 @@
     <string name="home_artist_name_sample">Sample artist name</string>
     <string name="home_album_art">album </string>
     <string name="home_upload">Upload</string>
+    <string name="home_default_song_progress">0:00</string>
+    <string name="home_default_song_duration">2:56</string>
     <string name="welcome_page_0_message">Welcome!</string>
     <string name="welcome_page_1_message">Listen to Music</string>
     <string name="welcome_finish">Got it</string>

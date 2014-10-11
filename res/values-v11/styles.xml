@@ -2,10 +2,18 @@
 
     <!--
         Base application theme for API 11+. This theme completely replaces
-        AppBaseTheme from res/values/styles.xml on API 11+ devices.
+        AppBaseTheme from res/values/styles.xml on API 11+ devices.
     -->
     <style name="AppBaseTheme" parent="android:Theme.Holo.Light">
         <!-- API 11 theme customizations can go here. -->
+    </style>
+
+    <style name="UploadTheme" parent="UploadBaseTheme">
+        <item name="android:actionModeCloseButtonStyle">@style/NoCloseButton</item>
+    </style>
+
+    <style name="NoCloseButton" parent="@android:style/Widget.ActionButton.CloseMode">
+        <item name="android:visibility">gone</item>
     </style>
 
 </resources>

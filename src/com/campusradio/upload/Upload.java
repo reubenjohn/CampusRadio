@@ -2,7 +2,6 @@ package com.campusradio.upload;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -10,7 +9,8 @@ import com.campusradio.android.R;
 
 public class Upload extends ActionBarActivity {
 
-	UploadFragment uploadFragment=new UploadFragment();
+	UploadFragment uploadFragment = new UploadFragment();
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -28,13 +28,6 @@ public class Upload extends ActionBarActivity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.upload, menu);
 		return true;
-	}
-	
-
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		uploadFragment.checkResponse();
-		return super.onKeyDown(keyCode, event);
 	}
 
 	@Override

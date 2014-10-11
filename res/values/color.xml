@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="red_dark">#A10010</color>
     <color name="belize_hole">#2980B9</color>
     <color name="nephritis">#27ae60</color>
@@ -7,6 +8,9 @@
     <color name="orange">#f39c12</color>
     <color name="pomegranate">#c0392b</color>
     <color name="holo_dark">#007777</color>
-    
-    
+    <color name="glass">#9900AAEE</color>
+    <color name="blue_dark">#528B8B</color>
+    <color name="blue_dark_glass">#55528B8B</color>
+    <color name="turquoise">#0FDDAF</color>
+
 </resources>

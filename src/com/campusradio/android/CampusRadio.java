@@ -11,12 +11,12 @@ public class CampusRadio {
 		public static final String uploadMood = "upload_mood";
 		public static final String uploadGenre = "upload_genre";
 		public static final String uploadDescription = "upload_description";
-		public static final String uploadUserName = "upload_username";
+		public static final String uploadUsername = "upload_username";
 		public static final String uploadResponse = "upload_response";
 
 	}
 
-	public static class defaults{
+	public static class defaults {
 
 		public static final String uploadSongName = "BAD_SONG_NAME";
 		public static final String uploadArtistName = "BAD_ARTIST_NAME";
@@ -27,17 +27,30 @@ public class CampusRadio {
 		public static final String uploadDescription = "BAD_DESCRIPTION";
 		public static final String uploadUserName = "BAD_USERNAME";
 		public static final String uploadResponse = "BAD_RESPONSE";
-		
+
 	}
-	
-	public static class requestCodes{
+
+	public static class requestCodes {
 
 		public static final int uploadSong = 1042;
-		
+
 	}
-	
+
 	public static class properties {
 		public static final int splashDuration = 1000;
-		public static final int uploadTimeOut = 60000*10;
+		public static final int uploadTimeOut = 10 * 60 * 1000;
+
+		public static final class uri {
+			public static final String home = "http://posttestserver.com/post.php";// http://posttestserver.com/post.php
+			public static final String upload = home;
+			public static final String nowPlaying = home;
+
+		}
 	}
+
+	public static class fileNames {
+
+		public static final String uploadInfo = "upload_info";
+	}
+
 }

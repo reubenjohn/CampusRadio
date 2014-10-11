@@ -12,7 +12,7 @@
     tools:context="com.campusradio.android.SuspiciousUpload$PlaceholderFragment" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/tv_song_progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/suspicious_upload_message"
